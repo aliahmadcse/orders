@@ -1,6 +1,8 @@
 package codes.aliahmad.orders.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -38,6 +40,7 @@ public class User
   @Column(name = "Address")
   private String address;
 
+  @JsonIgnoreProperties("user")
   @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
   private List<Order> orders;
 }

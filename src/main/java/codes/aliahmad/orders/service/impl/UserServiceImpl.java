@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService
 
 
   @Override
-  public User getUserById(Long id)
+  public User findUserById(int id)
   {
     Optional<User> user = userRepository.findById(id);
     if (user.isEmpty())

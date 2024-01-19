@@ -1,5 +1,7 @@
 package codes.aliahmad.orders.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,6 +18,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.ManyToAny;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -34,9 +37,11 @@ public class Order
 
   @ManyToOne
   @JoinColumn(name = "UserID")
+  @JsonIgnoreProperties("orders")
   private User user;
 
   @ManyToMany
+  @JsonIgnoreProperties("orders")
   @JoinTable(
           name = "OrderProduct",
           joinColumns = @JoinColumn(name = "OrderID"),
@@ -45,7 +50,7 @@ public class Order
   private List<Product> products;
 
   @Column(name = "OrderDate")
-  private Date orderDate;
+  private int orderDate;
 
   @Column(name = "Quantity")
   private int quantity;

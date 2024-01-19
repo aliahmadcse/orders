@@ -1,5 +1,6 @@
 package codes.aliahmad.orders.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,6 +37,7 @@ public class Product
   private String name;
 
   @ManyToMany(mappedBy = "products")
+  @JsonIgnoreProperties("products")
   private List<Order> orders;
 }
 

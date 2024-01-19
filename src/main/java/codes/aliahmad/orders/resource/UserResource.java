@@ -19,6 +19,6 @@ public class UserResource
   @GetMapping
   public ResponseEntity<User> getUser()
   {
-    return new ResponseEntity<>(userService.getUserById(1L), HttpStatus.OK);
+    return new ResponseEntity<>(userService.findUserById(1), HttpStatus.OK);
   }
 }
