@@ -2,7 +2,6 @@ package codes.aliahmad.orders.resource;
 
 import codes.aliahmad.orders.entity.User;
 import codes.aliahmad.orders.model.UserOrderSummaryDTO;
-import codes.aliahmad.orders.repository.OrderRepository;
 import codes.aliahmad.orders.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
