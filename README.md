@@ -207,22 +207,19 @@
 
 - **Status Code:** 200 OK
 - **Body:**
-  ```json
+```json
   [
     {
       "productId": 1001,
-      "productName": "Product A",
-      "totalReorderQuantity": 15
+      "productName": "Product A"
     },
     {
       "productId": 1002,
-      "productName": "Product B",
-      "totalReorderQuantity": 20
+      "productName": "Product B"
     },
     {
       "productId": 1003,
-      "productName": "Product C",
-      "totalReorderQuantity": 10
+      "productName": "Product C"
     }
   ]
 ```
