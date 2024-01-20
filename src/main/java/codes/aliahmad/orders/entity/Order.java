@@ -1,6 +1,5 @@
 package codes.aliahmad.orders.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,15 +10,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.ManyToAny;
 
-import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -31,7 +28,8 @@ import java.util.List;
 public class Order
 {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_seq_gen")
+  @SequenceGenerator(name = "order_seq_gen", sequenceName = "order_seq", initialValue = 1001)
   @Column(name = "OrderID")
   private int orderId;
 
