@@ -1,5 +1,7 @@
 # Orders Service
 
+---
+
 ## Order API Documentation
 
 ## Get All Orders
@@ -129,4 +131,98 @@
 - **Body:** (No Content)
 
 
-## Other API
+## Stat APIs
+
+## Get Top 3 Users by Ordered Products
+
+### Request
+
+- **Endpoint:** `GET /api/v1/users/top-users`
+- **Description:** Get the top 3 users who have ordered the most products based on the count of products in their orders.
+
+### Response
+
+- **Status Code:** 200 OK
+- **Body:**
+```json
+  [
+    {
+      "userId": 1,
+      "userName": "John Doe",
+      "totalOrderedProducts": 123
+    },
+    {
+      "userId": 2,
+      "userName": "Jane Smith",
+      "totalOrderedProducts": 121
+    },
+    {
+      "userId": 3,
+      "userName": "Alice Johnson",
+      "totalOrderedProducts": 120
+    }
+  ]
+```
+
+## Get Top 3 Most Ordered Products
+
+### Request
+
+- **Endpoint:** `GET /api/v1/product/top`
+- **Description:** Get the top 3 most ordered products based on the number of all orders.
+
+### Response
+
+- **Status Code:** 200 OK
+- **Body:**
+```json
+  [
+    {
+      "productId": 1001,
+      "productName": "Product A",
+      "totalOrders": 25
+    },
+    {
+      "productId": 1002,
+      "productName": "Product B",
+      "totalOrders": 20
+    },
+    {
+      "productId": 1003,
+      "productName": "Product C",
+      "totalOrders": 18
+    }
+  ]
+```
+
+
+## Get Top 3 Most Reordered Products
+
+### Request
+
+- **Endpoint:** `GET /api/v1/products/top/reordered`
+- **Description:** Get the top 3 most reordered products based on each user's first order.
+
+### Response
+
+- **Status Code:** 200 OK
+- **Body:**
+  ```json
+  [
+    {
+      "productId": 1001,
+      "productName": "Product A",
+      "totalReorderQuantity": 15
+    },
+    {
+      "productId": 1002,
+      "productName": "Product B",
+      "totalReorderQuantity": 20
+    },
+    {
+      "productId": 1003,
+      "productName": "Product C",
+      "totalReorderQuantity": 10
+    }
+  ]
+```
