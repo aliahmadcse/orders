@@ -28,10 +28,14 @@ public interface OrderRepository extends JpaRepository<Order, Integer>
           "ORDER BY COUNT(o) DESC LIMIT 3")
   List<ProductSummaryDTO> findTopThreeMostOrderedProducts();
 
-  @Query("SELECT NEW codes.aliahmad.orders.model.ReorderSummaryDTO(p.productId, p.productName, SUM(CASE WHEN ROW_NUMBER() OVER (PARTITION BY o.user, p.productId ORDER BY o.orderDate) > 1 THEN o.quantity ELSE 0 END)) " +
+
+
+  @Query("SELECT new codes.aliahmad.orders.model.ReorderSummaryDTO(p.productId, p.productName) " +
           "FROM Order o " +
           "JOIN o.products p " +
-          "GROUP BY p.productId, p.productName " +
-          "ORDER BY SUM(CASE WHEN ROW_NUMBER() OVER (PARTITION BY o.user, p.productId ORDER BY o.orderDate) > 1 THEN o.quantity ELSE 0 END) DESC LIMIT 3")
+          "JOIN o.user u " +
+          "GROUP BY p.productId, p.productName, u.userId " +
+          "HAVING COUNT(p) > 1 " +
+          "ORDER BY u.userId, p.productId DESC LIMIT 3")
   List<ReorderSummaryDTO> findTopThreeReorderedProducts();
 }

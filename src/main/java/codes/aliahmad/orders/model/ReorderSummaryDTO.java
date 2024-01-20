@@ -11,7 +11,6 @@ import lombok.Setter;
 @Setter
 public class ReorderSummaryDTO
 {
-  private Long productId;
+  private int productId;
   private String productName;
-  private Long totalReorderQuantity;
 }
